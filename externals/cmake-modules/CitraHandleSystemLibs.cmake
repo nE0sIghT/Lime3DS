@@ -26,6 +26,7 @@ option(USE_SYSTEM_OPENAL "Use the system OpenAL (instead of the bundled one)" OF
 option(USE_SYSTEM_VMA "Use the system VulkanMemoryAllocator (instead of the bundled one)" OFF)
 option(USE_SYSTEM_VULKAN_HEADERS "Use the system Vulkan headers (instead of the bundled ones)" OFF)
 option(USE_SYSTEM_CATCH2 "Use the system Catch2 (instead of the bundled one)" OFF)
+option(USE_SYSTEM_FAAD2 "Use the system faad2 (instead of the bundled one)" OFF)
 
 # Qt and MoltenVK are handled separately
 CMAKE_DEPENDENT_OPTION(DISABLE_SYSTEM_SDL2 "Disable system SDL2" OFF "USE_SYSTEM_LIBS" OFF)
@@ -51,6 +52,7 @@ CMAKE_DEPENDENT_OPTION(DISABLE_SYSTEM_OPENAL "Disable system OpenAL" OFF "USE_SY
 CMAKE_DEPENDENT_OPTION(DISABLE_SYSTEM_VMA "Disable system VulkanMemoryAllocator" OFF "USE_SYSTEM_LIBS" OFF)
 CMAKE_DEPENDENT_OPTION(DISABLE_SYSTEM_VULKAN_HEADERS "Disable system Vulkan headers" OFF "USE_SYSTEM_LIBS" OFF)
 CMAKE_DEPENDENT_OPTION(DISABLE_SYSTEM_CATCH2 "Disable system Catch2" OFF "USE_SYSTEM_LIBS" OFF)
+CMAKE_DEPENDENT_OPTION(DISABLE_SYSTEM_FAAD2 "Disable system faad2" OFF "USE_SYSTEM_LIBS" OFF)
 
 set(LIB_VAR_LIST
     SDL2
@@ -76,6 +78,7 @@ set(LIB_VAR_LIST
     VMA
     VULKAN_HEADERS
     CATCH2
+    FAAD2
     )
 
 # First, check that USE_SYSTEM_XXX is not used with USE_SYSTEM_LIBS
