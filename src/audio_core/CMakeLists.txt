@@ -44,7 +44,7 @@ add_library(audio_core STATIC
 create_target_directory_groups(audio_core)
 
 target_link_libraries(audio_core PUBLIC lime_common lime_core)
-target_link_libraries(audio_core PRIVATE faad2 SoundTouch teakra)
+target_link_libraries(audio_core PRIVATE ${faad2_LIBRARIES} SoundTouch teakra)
 
 if(ENABLE_SDL2)
     target_link_libraries(audio_core PRIVATE SDL2::SDL2)

@@ -151,7 +151,12 @@ endif()
 add_subdirectory(open_source_archives)
 
 # faad2
-add_subdirectory(faad2 EXCLUDE_FROM_ALL)
+if (USE_SYSTEM_FAAD2)
+    pkg_check_modules(faad2 REQUIRED faad2)
+else()
+    add_subdirectory(faad2 EXCLUDE_FROM_ALL)
+endif()
+
 
 # Dynamic library headers
 add_library(library-headers INTERFACE)
@@ -200,12 +205,7 @@ endif()
 
 # Zstandard
 if(USE_SYSTEM_ZSTD)
-    find_package(zstd REQUIRED)
-    add_library(zstd INTERFACE)
-    if(TARGET zstd::libzstd_shared)
-        message(STATUS "Found system Zstandard")
-    endif()
-    target_link_libraries(zstd INTERFACE zstd::libzstd_shared)
+    pkg_check_modules(ZSTD REQUIRED libzstd)
 else()
     set(ZSTD_LEGACY_SUPPORT OFF)
     set(ZSTD_BUILD_PROGRAMS OFF)
